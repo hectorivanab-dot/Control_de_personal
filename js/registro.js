@@ -17,19 +17,74 @@ campoDocumento.addEventListener("keydown", function(evento) {
         // Guardamos el documento recibido
         const documento = campoDocumento.value.trim();
 
-        // Comprobamos que se haya recibido un documento
+
+        // Comprobamos que haya un documento
         if (documento === "") {
+
             resultado.textContent = "No se recibió ningún documento.";
+
             return;
         }
 
-        // Por ahora solamente mostramos el documento
-        resultado.textContent = "Cédula recibida: " + documento;
 
-        // Limpiamos el campo
-        campoDocumento.value = "";
+        // Mostramos que estamos buscando al empleado
+        resultado.textContent = "Buscando empleado...";
 
-        // Dejamos nuevamente el cursor listo para otro escaneo
-        campoDocumento.focus();
+
+        // Enviamos el documento a PHP
+        fetch("../php/consultar_empleado.php", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+
+            body: "documento=" + encodeURIComponent(documento)
+
+        })
+
+
+        // Recibimos la respuesta de PHP
+        .then(respuesta => respuesta.json())
+
+
+        // Procesamos la información recibida
+        .then(datos => {
+
+            if (datos.estado === "ok") {
+
+                // Mostramos el nombre del empleado
+                resultado.textContent =
+                    "Empleado encontrado: " +
+                    datos.empleado.nombre;
+
+            } else {
+
+                // Mostramos el mensaje de error
+                resultado.textContent = datos.mensaje;
+            }
+
+
+            // Limpiamos el campo
+            campoDocumento.value = "";
+
+            // Dejamos nuevamente el cursor listo
+            campoDocumento.focus();
+
+        })
+
+
+        // Si ocurre algún problema de conexión
+        .catch(error => {
+
+            resultado.textContent =
+                "Ocurrió un error al consultar el empleado.";
+
+            console.error(error);
+
+        });
+
     }
+
 });
