@@ -39,3 +39,30 @@ button {
 button:hover {
     background-color: #c92335;
 }
+
+/* Formulario de registro del personal*/
+
+form {
+    width: 400px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+select{
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+form button {
+    display: block;
+    margin: 20px auto 0;
+}
