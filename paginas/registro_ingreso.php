@@ -58,7 +58,8 @@
     </main>
 
 
-    <!-- Más adelante aquí conectaremos JavaScript -->
+    <!-- Conectamos JavaScript -->
+<script src="../js/registro.js"></script>
 
 </body>
 
