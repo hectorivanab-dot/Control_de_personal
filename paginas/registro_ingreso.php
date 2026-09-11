@@ -5,82 +5,60 @@
 
     <meta charset="UTF-8">
 
-    <!-- Esto ayuda a que la página se adapte a celulares y computadores en pocas palabras es el menu hamburguesa -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registrar ingreso</title>
+    <title>Control de Personal</title>
 
-    <!-- Aquí conectamos el diseño que tenemos en nuestro archivo CSS. 
-     Nota: Esto es para recordar como colocar el link a los archivos que esten dentro de una carpeta y no en la raiz del proyecto  -->
-
+    <!-- Conectamos el archivo de estilos -->
     <link rel="stylesheet" href="../css/estilos.css">
 
 </head>
 
 <body>
 
-    <!-- El inicio de la página -->
+    <!-- Encabezado -->
     <header>
 
         <h1>Control de Personal</h1>
 
-        <p>Registro de ingreso</p>
+        <p>Registro de ingreso y salida</p>
 
     </header>
 
 
-    <!-- Aquí va la parte principal de la página -->
+    <!-- Contenido principal -->
     <main>
 
-        <h2>Registrar ingreso del personal</h2>
+        <h2>Escanee su cédula</h2>
+
+        <p>
+            Acerque su documento al lector para registrar la asistencia.
+        </p>
 
 
-        <!-- Formulario donde vamos a ingresar los datos del personal -->
-        <form>
-
-            <!-- Nombre de la persona -->
-            <label for="nombre">Nombre completo</label>
-            <br>
-
-            <input
-                type="text"
-                id="nombre"
-                name="nombre">
-
-
-            <!-- Número de documento -->
-            <br><br>
-
-            <label for="documento">Número de documento</label>
-            <br>
-
-            <input
-                type="text"
-                id="documento"
-                name="documento">
+        <!--
+            Este campo recibirá automáticamente
+            el número que envíe el escáner.
+        -->
+        <input
+            type="text"
+            id="documento"
+            placeholder="Esperando escaneo..."
+            autofocus
+        >
 
 
-            <!-- Área donde trabaja la persona ya sea Administrativa o Operativa-->
-            <br><br>
+        <!-- Aquí mostraremos el resultado -->
+        <div id="resultado">
 
-            <label for="area">Área</label>
-            <br>
+            Esperando que se escanee una cédula...
 
-            <select id="area" name="area">
-                <option value="">Seleccione un área</option>
-                <option value="Administrativa">Administrativa</option>
-                <option value="Operativa">Operativa</option>
-            </select>
-
-
-            <!-- Botón para enviar el formulario -->
-            <button type="submit">
-                Registrar ingreso
-            </button>
-
-        </form>
+        </div>
 
     </main>
+
+
+    <!-- Más adelante aquí conectaremos JavaScript -->
 
 </body>
 
